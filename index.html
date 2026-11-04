@@ -31,11 +31,11 @@
     <div class="content-side">
       <div class="content-inner">
         
-        <!-- Eyebrow Tag -->
-        <div class="eyebrow-tag">
+        <!-- Eyebrow Location Link -->
+        <a href="https://share.google/w9Lan5VydQo54Kk9G" target="_blank" rel="noopener noreferrer" class="eyebrow-tag" id="locationLink" title="View Location on Google Maps">
           <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
           <span id="eyebrowText">THRISSUR &bull; CHRIST COLLEGE OF ENGINEERING</span>
-        </div>
+        </a>
 
         <!-- Huge Impact Title -->
         <h1 class="hero-name">
@@ -191,8 +191,12 @@
           </div>
         </div>
         <div class="input-group">
-          <label for="inputEyebrow">Header Eyebrow</label>
+          <label for="inputEyebrow">Location Label / Eyebrow</label>
           <input type="text" id="inputEyebrow" />
+        </div>
+        <div class="input-group">
+          <label for="inputLocationUrl">Location Map URL</label>
+          <input type="url" id="inputLocationUrl" placeholder="https://share.google/..." />
         </div>
         <div class="input-group">
           <label for="inputRole">Designation / Subtitle</label>

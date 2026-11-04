@@ -12,6 +12,7 @@ const DEFAULT_DETAILS = {
   nameFirst: "SUNI",
   nameLast: "JOSE",
   eyebrow: "THRISSUR • CHRIST COLLEGE OF ENGINEERING",
+  locationUrl: "https://share.google/w9Lan5VydQo54Kk9G",
   role: "Assistant Professor • Computer Science & Business Systems",
   desc: "Department of Computer Science & Business Systems at Christ College of Engineering. Curating curriculum, research papers, lecture notes, and student resources.",
   phone: "7994532402",
@@ -25,10 +26,10 @@ const DEFAULT_LINKS = [
   { id: "4", title: "Christ College of Engineering", url: "https://cce.edu.in", isPrimary: false }
 ];
 
-const STORAGE_LINKS_KEY = "suni_hero_links_v4";
-const STORAGE_DETAILS_KEY = "suni_profile_details_v4";
-const STORAGE_PHOTO_KEY = "suni_hero_photo_v4";
-const STORAGE_AUTH_KEY = "suni_auth_session_v4";
+const STORAGE_LINKS_KEY = "suni_hero_links_v5";
+const STORAGE_DETAILS_KEY = "suni_profile_details_v5";
+const STORAGE_PHOTO_KEY = "suni_hero_photo_v5";
+const STORAGE_AUTH_KEY = "suni_auth_session_v5";
 
 let links = [];
 let heroPhoto = "";
@@ -85,6 +86,10 @@ function render() {
 
   // Render Details
   document.getElementById("eyebrowText").textContent = profileDetails.eyebrow || DEFAULT_DETAILS.eyebrow;
+  const locEl = document.getElementById("locationLink");
+  if (locEl) {
+    locEl.href = profileDetails.locationUrl || DEFAULT_DETAILS.locationUrl;
+  }
   document.getElementById("nameFirst").textContent = profileDetails.nameFirst || DEFAULT_DETAILS.nameFirst;
   document.getElementById("nameLast").textContent = profileDetails.nameLast || DEFAULT_DETAILS.nameLast;
   document.getElementById("heroRole").textContent = profileDetails.role || DEFAULT_DETAILS.role;
@@ -238,6 +243,7 @@ function setupEvents() {
     document.getElementById("inputFirstName").value = profileDetails.nameFirst || DEFAULT_DETAILS.nameFirst;
     document.getElementById("inputLastName").value = profileDetails.nameLast || DEFAULT_DETAILS.nameLast;
     document.getElementById("inputEyebrow").value = profileDetails.eyebrow || DEFAULT_DETAILS.eyebrow;
+    document.getElementById("inputLocationUrl").value = profileDetails.locationUrl || DEFAULT_DETAILS.locationUrl;
     document.getElementById("inputRole").value = profileDetails.role || DEFAULT_DETAILS.role;
     document.getElementById("inputDesc").value = profileDetails.desc || DEFAULT_DETAILS.desc;
     document.getElementById("inputPhone").value = profileDetails.phone || DEFAULT_DETAILS.phone;
@@ -254,6 +260,7 @@ function setupEvents() {
       nameFirst: document.getElementById("inputFirstName").value.trim(),
       nameLast: document.getElementById("inputLastName").value.trim(),
       eyebrow: document.getElementById("inputEyebrow").value.trim(),
+      locationUrl: document.getElementById("inputLocationUrl").value.trim() || DEFAULT_DETAILS.locationUrl,
       role: document.getElementById("inputRole").value.trim(),
       desc: document.getElementById("inputDesc").value.trim(),
       phone: document.getElementById("inputPhone").value.trim(),

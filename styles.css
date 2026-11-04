@@ -155,10 +155,25 @@ html, body {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
+  text-decoration: none;
+  cursor: pointer;
+  width: fit-content;
+  transition: all 0.2s ease;
+}
+
+.eyebrow-tag:hover {
+  color: var(--accent-peacock-hover);
+  transform: translateX(3px);
+  text-shadow: 0 0 14px var(--accent-peacock-glow);
 }
 
 .eyebrow-tag svg {
   color: var(--accent-peacock);
+  transition: transform 0.2s ease;
+}
+
+.eyebrow-tag:hover svg {
+  transform: scale(1.15);
 }
 
 /* Massive Impact Name */
