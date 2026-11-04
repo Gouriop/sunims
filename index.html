@@ -3,565 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suni Jose &bull; Assistant Professor (CSBS) &bull; Resource Hub</title>
+  <title>Suni Jose &bull; Links</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- App Container -->
-  <div class="app-layout">
-    
-    <!-- Top Navigation Bar -->
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-logo">
-          <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-          </svg>
-        </div>
-        <div>
-          <span class="brand-title">LinkSpace</span>
-          <span class="brand-badge">Hub</span>
-        </div>
+
+  <!-- Fullscreen Photo Background with Dark Scrim -->
+  <div class="bg-photo" id="bgPhoto"></div>
+  <div class="bg-scrim"></div>
+
+  <!-- Top Control Bar (discreet) -->
+  <header class="top-bar">
+    <div id="editorControls" class="editor-controls" style="display: none;">
+      <button id="changeBgBtn" class="pill-btn" title="Change Background Photo">
+        🖼️ Background
+      </button>
+      <button id="editDetailsBtn" class="pill-btn" title="Edit Name & Details">
+        ✏️ Edit Card
+      </button>
+      <button id="logoutBtn" class="pill-btn pill-btn-danger" title="Lock">
+        Logout
+      </button>
+    </div>
+    <button id="loginBtn" class="pill-btn pill-btn-login" title="Login to add/edit links">
+      🔒 Edit Mode
+    </button>
+  </header>
+
+  <!-- Center Floating Card for Details & Links -->
+  <main class="page-container">
+    <div class="small-card">
+      
+      <!-- Avatar Photo -->
+      <div class="avatar-wrap">
+        <div class="avatar" id="avatarContainer">SJ</div>
+        <button id="changeAvatarBtn" class="avatar-camera-btn" title="Change Profile Photo" style="display: none;">
+          📷
+        </button>
+        <input type="file" id="avatarFileInput" accept="image/*" style="display: none;" />
       </div>
 
-      <div class="topbar-actions">
-        <!-- Quick stats summary -->
-        <div class="quick-stats-pill">
-          <span id="headerTotalLinks">0</span> Links Saved
-        </div>
+      <!-- Person Details -->
+      <h1 class="person-name" id="personName">Suni Jose</h1>
+      <p class="person-role" id="personRole">Assistant Professor</p>
+      <p class="person-dept" id="personDept">Department of Computer Science &amp; Business Systems</p>
 
-        <!-- Theme Toggle -->
-        <button id="themeToggleBtn" class="icon-btn" title="Toggle theme" aria-label="Toggle dark/light mode">
-          <span class="theme-icon-light">
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          </span>
-          <span class="theme-icon-dark">
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-          </span>
-        </button>
-
-        <!-- Backup Data Menu -->
-        <div class="dropdown">
-          <button id="dataMenuBtn" class="secondary-btn btn-sm">
-            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
-            Data
-          </button>
-          <div class="dropdown-menu" id="dataDropdown">
-            <button class="dropdown-item" id="exportDataBtn">
-              <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              Export JSON Backup
-            </button>
-            <label class="dropdown-item" for="importFileInput" style="cursor: pointer;">
-              <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-              Import JSON
-            </label>
-            <input type="file" id="importFileInput" accept=".json" style="display: none;" />
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item text-danger" id="resetDataBtn">
-              <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
-              Reset to Sample Data
-            </button>
-          </div>
-        </div>
-
-        <!-- Add New Link Button (Editor only) -->
-        <button id="openAddModalBtn" class="primary-btn">
-          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-          Add New Link
-        </button>
-
-        <!-- Auth / Login Tab in the Corner -->
-        <div class="auth-corner" id="authCorner">
-          <!-- When Logged Out: Login Tab -->
-          <button id="loginBtn" class="auth-tab-btn" title="Login to edit links and data">
-            <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            <span>Login to Edit</span>
-          </button>
-
-          <!-- When Logged In: Editor Status Dropdown -->
-          <div class="dropdown" id="loggedInDropdownContainer" style="display: none;">
-            <button class="auth-status-pill" id="userMenuBtn" title="Account & Editor Settings">
-              <span class="user-status-dot"></span>
-              <span class="user-role-text">Editor Mode</span>
-              <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="dropdown-menu dropdown-menu-end" id="userDropdown">
-              <div class="dropdown-header">
-                <span class="dropdown-header-title">Editor Session Active</span>
-                <span class="dropdown-header-subtitle">You can add and edit links &amp; info</span>
-              </div>
-              <div class="dropdown-divider"></div>
-              <button class="dropdown-item" id="changePasswordBtn">
-                <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                Change Password
-              </button>
-              <div class="dropdown-divider"></div>
-              <button class="dropdown-item text-danger" id="logoutBtn">
-                <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-                Logout
-              </button>
-            </div>
-          </div>
-        </div>
+      <!-- Contact Badges -->
+      <div class="contact-badges">
+        <a href="mailto:sunijose.cs@cce.edu.in" id="contactEmail" class="contact-pill" target="_blank">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span id="emailText">sunijose.cs@cce.edu.in</span>
+        </a>
+        <a href="tel:7994532402" id="contactPhone" class="contact-pill">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span id="phoneText">7994532402</span>
+        </a>
       </div>
-    </header>
 
-    <!-- Main Content Area with 2 Columns: Profile on left/top, Dashboard on right/center -->
-    <main class="main-container">
+      <div class="divider"></div>
 
-      <!-- LEFT SIDEBAR: Common Person Details Space -->
-      <aside class="person-space-card">
-        <div class="card-header-row">
-          <div class="section-title-wrap">
-            <span class="section-badge">Common Space</span>
-            <h2 class="section-title">Person Details</h2>
-          </div>
-          <div class="person-header-actions">
-            <button id="editPersonBtn" class="edit-pill-btn" title="Edit Person Details">
-              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-              Edit Info
-            </button>
-            <button id="personLoginPromptBtn" class="view-only-pill" title="Click to log in and edit" style="display: none;">
-              <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-              View Only
-            </button>
-          </div>
-        </div>
+      <!-- Links List -->
+      <div class="links-list" id="linksList">
+        <!-- Rendered via JS -->
+      </div>
 
-        <!-- Profile display card -->
-        <div class="profile-display">
-          <div class="profile-avatar-wrapper">
-            <div class="profile-avatar" id="personAvatarContainer">
-              <!-- Rendered via JS -->
-            </div>
-            <button id="avatarUploadBtn" class="avatar-camera-btn" title="Upload profile photo" style="display: none;">
-              <svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" stroke-width="2" fill="none"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            </button>
-            <input type="file" id="quickAvatarFileInput" accept="image/*" style="display: none;" />
-            <div class="status-indicator-dot" title="Active"></div>
-          </div>
+      <!-- Add Link Button -->
+      <button id="openAddLinkModalBtn" class="add-link-btn">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        <span>Add Link</span>
+      </button>
 
-          <div class="profile-identity">
-            <h3 class="person-name" id="viewPersonName">Suni Jose</h3>
-            <p class="person-role" id="viewPersonRole">Assistant Professor</p>
-            <span class="person-dept" id="viewPersonDept">Department of Computer Science and Business Systems</span>
-          </div>
+    </div>
+  </main>
 
-          <p class="person-bio" id="viewPersonBio">
-            Assistant Professor in the Department of Computer Science and Business Systems. Curating academic resources, lecture materials, research portals, and departmental tools.
-          </p>
-
-          <!-- Contact items -->
-          <div class="contact-list">
-            <div class="contact-item" id="itemEmail">
-              <div class="contact-icon">
-                <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              </div>
-              <div class="contact-content">
-                <span class="contact-label">Email</span>
-                <a href="mailto:sunijose.cs@cce.edu.in" id="viewPersonEmail" class="contact-val" target="_blank">sunijose.cs@cce.edu.in</a>
-              </div>
-            </div>
-
-            <div class="contact-item" id="itemPhone">
-              <div class="contact-icon">
-                <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              </div>
-              <div class="contact-content">
-                <span class="contact-label">Phone</span>
-                <a href="tel:7994532402" id="viewPersonPhone" class="contact-val">7994532402</a>
-              </div>
-            </div>
-
-            <div class="contact-item" id="itemLocation">
-              <div class="contact-icon">
-                <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              </div>
-              <div class="contact-content">
-                <span class="contact-label">Institution / Campus</span>
-                <span id="viewPersonLocation" class="contact-val">Christ College of Engineering</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Social / Important Quick Links for the Person -->
-          <div class="person-quick-links">
-            <span class="contact-label" style="display:block; margin-bottom: 8px;">Key Profiles</span>
-            <div class="quick-link-tags" id="personSocialTags">
-              <!-- Rendered via JS -->
-            </div>
-          </div>
-
-          <!-- Person Space Notes / Custom metadata -->
-          <div class="person-notes-box">
-            <div class="notes-header">
-              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-              <span>Shared Space Notes</span>
-            </div>
-            <p id="viewPersonNotes" class="notes-text">
-              Department of Computer Science and Business Systems &bull; Office Hours: 9:00 AM - 4:30 PM (Mon-Fri) | Contact via official email for academic &amp; project consultations.
-            </p>
-          </div>
-        </div>
-      </aside>
-
-      <!-- RIGHT DASHBOARD: Link Organizer -->
-      <section class="dashboard-space">
-        
-        <!-- Summary Stats Cards -->
-        <div class="stats-row">
-          <div class="stat-card" data-filter="all">
-            <div class="stat-icon bg-indigo">
-              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-            </div>
-            <div class="stat-info">
-              <div class="stat-num" id="statTotalLinks">0</div>
-              <div class="stat-label">Total Links</div>
-            </div>
-          </div>
-
-          <div class="stat-card" data-filter="favorites">
-            <div class="stat-icon bg-amber">
-              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            </div>
-            <div class="stat-info">
-              <div class="stat-num" id="statFavorites">0</div>
-              <div class="stat-label">Starred Favorites</div>
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon bg-emerald">
-              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-            </div>
-            <div class="stat-info">
-              <div class="stat-num" id="statCategories">0</div>
-              <div class="stat-label">Categories</div>
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon bg-purple">
-              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-            </div>
-            <div class="stat-info">
-              <div class="stat-num" id="statTotalClicks">0</div>
-              <div class="stat-label">Total Visits</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Filter & Search Controls Header -->
-        <div class="dashboard-controls-card">
-          <div class="search-sort-bar">
-            <!-- Search input -->
-            <div class="search-box">
-              <svg class="search-icon" viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-              <input type="text" id="searchInput" placeholder="Search links by title, url, tags, or notes..." autocomplete="off" />
-              <button id="clearSearchBtn" class="clear-search-btn" title="Clear search" style="display: none;">&times;</button>
-            </div>
-
-            <!-- Sort By -->
-            <div class="sort-wrapper">
-              <label for="sortBySelect" class="control-label">Sort:</label>
-              <select id="sortBySelect" class="form-select select-sm">
-                <option value="newest">Newest First</option>
-                <option value="oldest">Oldest First</option>
-                <option value="alpha">Title (A-Z)</option>
-                <option value="clicks">Most Visited</option>
-                <option value="starred">Favorites First</option>
-              </select>
-            </div>
-
-            <!-- View toggle (Grid / List) -->
-            <div class="view-toggle">
-              <button class="view-btn active" id="viewGridBtn" title="Grid View" aria-label="Grid view">
-                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-              </button>
-              <button class="view-btn" id="viewListBtn" title="List View" aria-label="List view">
-                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-              </button>
-            </div>
-          </div>
-
-          <!-- Category filter tabs -->
-          <div class="category-tabs-container">
-            <div class="category-tabs" id="categoryTabs">
-              <!-- Dynamically populated with category pills -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Links Container -->
-        <div class="links-view-wrapper">
-          <div class="links-grid" id="linksGrid">
-            <!-- Dynamically populated link cards -->
-          </div>
-
-          <!-- Empty State -->
-          <div class="empty-state" id="emptyState" style="display: none;">
-            <div class="empty-icon">
-              <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1.5" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-            </div>
-            <h3 class="empty-title">No links found</h3>
-            <p class="empty-desc">Try clearing your search query or add a brand new link to your collection.</p>
-            <button class="primary-btn mt-3" id="emptyAddBtn">
-              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-              Add First Link
-            </button>
-          </div>
-        </div>
-
-      </section>
-    </main>
-  </div>
-
-  <!-- MODAL: Add / Edit Link -->
-  <div class="modal-backdrop" id="linkModalBackdrop">
-    <div class="modal-dialog">
+  <!-- MODAL: Add Link -->
+  <div class="modal-backdrop" id="addLinkModal">
+    <div class="modal-box">
       <div class="modal-header">
-        <h3 class="modal-title" id="linkModalTitle">Add New Link</h3>
-        <button class="modal-close-btn" id="closeLinkModalBtn">&times;</button>
+        <h3>Add New Link</h3>
+        <button class="modal-close" id="closeAddLinkModal">&times;</button>
       </div>
-      <form id="linkForm" class="modal-body">
-        <input type="hidden" id="linkId" />
-
-        <div class="form-group">
-          <label for="linkUrl" class="field-label">URL / Web Address <span class="required">*</span></label>
-          <input type="text" id="linkUrl" class="form-input" placeholder="e.g. https://github.com or google.com" required />
-          <span class="field-help">Can be any valid link or web address.</span>
+      <form id="addLinkForm" class="modal-form">
+        <div class="input-group">
+          <label for="newLinkTitle">Link Title</label>
+          <input type="text" id="newLinkTitle" placeholder="e.g. KTU Academic Portal" required />
         </div>
-
-        <div class="form-group">
-          <label for="linkTitle" class="field-label">Title / Label <span class="required">*</span></label>
-          <input type="text" id="linkTitle" class="form-input" placeholder="e.g. Project Repository or Design Specs" required />
+        <div class="input-group">
+          <label for="newLinkUrl">URL / Web Link</label>
+          <input type="text" id="newLinkUrl" placeholder="e.g. https://ktu.edu.in" required />
         </div>
-
-        <div class="form-row">
-          <div class="form-group col-6">
-            <label for="linkCategory" class="field-label">Category</label>
-            <input type="text" id="linkCategory" list="categoryOptions" class="form-input" placeholder="e.g. Work, Tools, Dev, Personal" />
-            <datalist id="categoryOptions">
-              <option value="Work">
-              <option value="Tools">
-              <option value="Design">
-              <option value="Dev &amp; Code">
-              <option value="Documents">
-              <option value="Personal">
-              <option value="Reference">
-            </datalist>
-          </div>
-
-          <div class="form-group col-6">
-            <label for="linkTags" class="field-label">Tags (comma separated)</label>
-            <input type="text" id="linkTags" class="form-input" placeholder="e.g. urgent, figma, api" />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="linkNotes" class="field-label">Notes &amp; Details (Optional)</label>
-          <textarea id="linkNotes" class="form-textarea" rows="2" placeholder="Add helpful context, login reminders, or key notes about this link..."></textarea>
-        </div>
-
-        <div class="form-checkbox-row">
-          <label class="checkbox-container">
-            <input type="checkbox" id="linkFavorite" />
-            <span class="checkmark"></span>
-            <span class="checkbox-label">Mark as Favorite / Starred</span>
-          </label>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="secondary-btn" id="cancelLinkBtn">Cancel</button>
-          <button type="submit" class="primary-btn" id="saveLinkBtn">Save Link</button>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancelAddLink">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add Link</button>
         </div>
       </form>
     </div>
   </div>
 
   <!-- MODAL: Edit Person Details -->
-  <div class="modal-backdrop" id="personModalBackdrop">
-    <div class="modal-dialog">
+  <div class="modal-backdrop" id="editDetailsModal">
+    <div class="modal-box">
       <div class="modal-header">
-        <h3 class="modal-title">Edit Person Details</h3>
-        <button class="modal-close-btn" id="closePersonModalBtn">&times;</button>
+        <h3>Edit Details Card</h3>
+        <button class="modal-close" id="closeEditDetailsModal">&times;</button>
       </div>
-      <form id="personForm" class="modal-body">
-        <div class="form-row">
-          <div class="form-group col-6">
-            <label for="personNameInput" class="field-label">Full Name <span class="required">*</span></label>
-            <input type="text" id="personNameInput" class="form-input" required />
-          </div>
-
-          <div class="form-group col-6">
-            <label for="personRoleInput" class="field-label">Title / Role</label>
-            <input type="text" id="personRoleInput" class="form-input" placeholder="e.g. Senior Designer" />
-          </div>
+      <form id="editDetailsForm" class="modal-form">
+        <div class="input-group">
+          <label for="inputName">Full Name</label>
+          <input type="text" id="inputName" required />
         </div>
-
-        <div class="form-row">
-          <div class="form-group col-6">
-            <label for="personDeptInput" class="field-label">Department / Team</label>
-            <input type="text" id="personDeptInput" class="form-input" placeholder="e.g. Engineering &amp; Operations" />
-          </div>
-
-          <div class="form-group col-6">
-            <label for="personLocationInput" class="field-label">Location</label>
-            <input type="text" id="personLocationInput" class="form-input" placeholder="e.g. New York, NY" />
-          </div>
+        <div class="input-group">
+          <label for="inputRole">Designation / Role</label>
+          <input type="text" id="inputRole" placeholder="e.g. Assistant Professor" />
         </div>
-
-        <div class="form-row">
-          <div class="form-group col-6">
-            <label for="personEmailInput" class="field-label">Email</label>
-            <input type="email" id="personEmailInput" class="form-input" placeholder="name@domain.com" />
-          </div>
-
-          <div class="form-group col-6">
-            <label for="personPhoneInput" class="field-label">Phone</label>
-            <input type="text" id="personPhoneInput" class="form-input" placeholder="+1 (555) 000-0000" />
-          </div>
+        <div class="input-group">
+          <label for="inputDept">Department</label>
+          <input type="text" id="inputDept" placeholder="e.g. Dept of CSBS" />
         </div>
-
-        <div class="form-group">
-          <label class="field-label">Profile Photo / Avatar Image</label>
-          <div class="photo-upload-container">
-            <div class="photo-preview-box" id="modalPhotoPreview">
-              <!-- Rendered via JS -->
-            </div>
-            <div class="photo-upload-controls">
-              <div class="photo-actions-row">
-                <button type="button" class="secondary-btn btn-sm" id="choosePhotoFileBtn">
-                  <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                  Upload Image from Computer
-                </button>
-                <button type="button" class="icon-btn-ghost text-danger" id="removePhotoBtn" title="Remove photo (use gradient initials)">
-                  <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-                </button>
-              </div>
-              <input type="file" id="modalPhotoFileInput" accept="image/*" style="display: none;" />
-              <div class="photo-url-wrap">
-                <span class="photo-or-divider">or enter web image link:</span>
-                <input type="url" id="personAvatarUrlInput" class="form-input form-input-sm" placeholder="https://... image link" />
-              </div>
-            </div>
-          </div>
-          <span class="field-help">Upload any picture file (JPG, PNG, WebP) directly from your system or paste an image link.</span>
+        <div class="input-group">
+          <label for="inputEmail">Email Address</label>
+          <input type="email" id="inputEmail" />
         </div>
-
-        <div class="form-group">
-          <label for="personBioInput" class="field-label">About / Bio</label>
-          <textarea id="personBioInput" class="form-textarea" rows="2" placeholder="Brief summary of who this person is or what this dashboard is for..."></textarea>
+        <div class="input-group">
+          <label for="inputPhone">Phone Number</label>
+          <input type="text" id="inputPhone" />
         </div>
-
-        <div class="form-group">
-          <label for="personSocialsInput" class="field-label">Socials / Key Links (Name: URL, one per line)</label>
-          <textarea id="personSocialsInput" class="form-textarea font-mono" rows="3" placeholder="LinkedIn: https://linkedin.com/in/...
-GitHub: https://github.com/...
-Portfolio: https://myportfolio.site"></textarea>
-          <span class="field-help">Format: <code>Label: https://example.com</code> (one per line)</span>
-        </div>
-
-        <div class="form-group">
-          <label for="personNotesInput" class="field-label">Common Shared Notes</label>
-          <textarea id="personNotesInput" class="form-textarea" rows="2" placeholder="Office hours, responsibilities, or announcements..."></textarea>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="secondary-btn" id="cancelPersonBtn">Cancel</button>
-          <button type="submit" class="primary-btn">Save Person Details</button>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancelEditDetails">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Details</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- MODAL: Person Login -->
-  <div class="modal-backdrop" id="loginModalBackdrop">
-    <div class="modal-dialog modal-dialog-sm">
+  <!-- MODAL: Change Background Photo -->
+  <div class="modal-backdrop" id="changeBgModal">
+    <div class="modal-box">
       <div class="modal-header">
-        <div class="modal-header-lead">
-          <div class="modal-header-icon">
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.2" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          </div>
-          <div>
-            <h3 class="modal-title">Editor Login</h3>
-            <p class="modal-subtitle">Log in to add or edit links and person details</p>
-          </div>
-        </div>
-        <button class="modal-close-btn" id="closeLoginModalBtn">&times;</button>
+        <h3>Change Background Photo</h3>
+        <button class="modal-close" id="closeBgModal">&times;</button>
       </div>
-      <form id="loginForm" class="modal-body">
-        <div class="form-group">
-          <label for="loginPassword" class="field-label">Editor Password <span class="required">*</span></label>
-          <div class="password-input-wrap">
-            <input type="password" id="loginPassword" class="form-input" placeholder="Enter password..." required autocomplete="current-password" />
-            <button type="button" id="togglePasswordVisibilityBtn" class="toggle-pwd-btn" title="Show / Hide password">
-              <svg id="eyeIcon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-            </button>
-          </div>
-          <span class="field-help" id="loginHintText">
-            Default passcode: <strong>admin123</strong> (you can change this anytime)
-          </span>
-        </div>
-
-        <div id="loginErrorMessage" class="form-error-banner" style="display: none;">
-          <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-          <span>Incorrect password. Please try again.</span>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="secondary-btn" id="cancelLoginBtn">Cancel</button>
-          <button type="submit" class="primary-btn" id="submitLoginBtn">
-            Unlock Editing
+      <div class="modal-form">
+        <div class="input-group">
+          <label>Upload Photo from Computer</label>
+          <input type="file" id="bgFileInput" accept="image/*" style="display: none;" />
+          <button type="button" class="btn btn-secondary btn-full" id="selectBgFileBtn">
+            📁 Choose Photo File
           </button>
         </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- MODAL: Change Password -->
-  <div class="modal-backdrop" id="changePasswordModalBackdrop">
-    <div class="modal-dialog modal-dialog-sm">
-      <div class="modal-header">
-        <h3 class="modal-title">Change Editor Password</h3>
-        <button class="modal-close-btn" id="closeChangePasswordModalBtn">&times;</button>
+        <div class="or-separator"><span>OR ENTER IMAGE LINK</span></div>
+        <div class="input-group">
+          <label for="bgUrlInput">Image URL</label>
+          <input type="url" id="bgUrlInput" placeholder="https://images.unsplash.com/..." />
+        </div>
+        <div class="preset-bgs">
+          <label>Quick Presets:</label>
+          <div class="preset-thumbs">
+            <button class="thumb-btn" data-bg="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2000" style="background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=200');" title="Campus Tech"></button>
+            <button class="thumb-btn" data-bg="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2000" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=200');" title="University Campus"></button>
+            <button class="thumb-btn" data-bg="https://images.unsplash.com/photo-1507842229451-7f01be85ab71?q=80&w=2000" style="background-image: url('https://images.unsplash.com/photo-1507842229451-7f01be85ab71?q=80&w=200');" title="Library Books"></button>
+            <button class="thumb-btn" data-bg="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=200');" title="Technology Blue"></button>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancelBgModal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="saveBgUrlBtn">Apply URL</button>
+        </div>
       </div>
-      <form id="changePasswordForm" class="modal-body">
-        <div class="form-group">
-          <label for="currentPasswordInput" class="field-label">Current Password <span class="required">*</span></label>
-          <input type="password" id="currentPasswordInput" class="form-input" required autocomplete="current-password" />
+    </div>
+  </div>
+
+  <!-- MODAL: Passcode Login -->
+  <div class="modal-backdrop" id="loginModal">
+    <div class="modal-box modal-box-sm">
+      <div class="modal-header">
+        <h3>Editor Unlock</h3>
+        <button class="modal-close" id="closeLoginModal">&times;</button>
+      </div>
+      <form id="loginForm" class="modal-form">
+        <p class="modal-note">Enter passcode to add links and edit card details.</p>
+        <div class="input-group">
+          <label for="loginPasscode">Passcode</label>
+          <input type="password" id="loginPasscode" placeholder="Enter password (default: admin123)" required autocomplete="current-password" />
         </div>
-
-        <div class="form-group">
-          <label for="newPasswordInput" class="field-label">New Password <span class="required">*</span></label>
-          <input type="password" id="newPasswordInput" class="form-input" minlength="4" required autocomplete="new-password" />
-          <span class="field-help">Minimum 4 characters.</span>
+        <div id="loginError" class="error-msg" style="display: none;">
+          Incorrect passcode. (Default: admin123)
         </div>
-
-        <div class="form-group">
-          <label for="confirmPasswordInput" class="field-label">Confirm New Password <span class="required">*</span></label>
-          <input type="password" id="confirmPasswordInput" class="form-input" required autocomplete="new-password" />
-        </div>
-
-        <div id="changePasswordError" class="form-error-banner" style="display: none;"></div>
-
-        <div class="modal-footer">
-          <button type="button" class="secondary-btn" id="cancelChangePasswordBtn">Cancel</button>
-          <button type="submit" class="primary-btn">Update Password</button>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancelLogin">Cancel</button>
+          <button type="submit" class="btn btn-primary">Unlock</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Toast Notification Container -->
-  <div class="toast-container" id="toastContainer"></div>
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
 
-  <!-- Core JavaScript -->
   <script src="app.js"></script>
 </body>
 </html>
-
