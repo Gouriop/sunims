@@ -1,10 +1,10 @@
 /**
  * Suni Jose &bull; Dark Editorial Hero Application
  * Theme: Peacock Green & White
- * Passcode: sunimiss123
+ * Passcode: sunikkutty123
  */
 
-const PASSWORD_KEY = "sunimiss123";
+const PASSWORD_KEY = "sunikkutty123";
 
 const DEFAULT_PHOTO = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1600";
 
