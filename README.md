@@ -17,14 +17,17 @@ A bold, dark-themed personal link and profile hub for **Suni Jose**, Assistant P
 
 ---
 
-### 🔒 Editor Login & Management
+### 🔒 Editor Login & Real-Time Cloud Sync
 - Click **`Login`** in the top-right corner.
 - **Passcode:** `sunikkutty123`
+- **Real-Time Cross-Device Sync:**
+  - Whenever you add a link, remove a link, update info, or upload a photo, it is automatically synced to the cloud in real-time.
+  - Anyone who opens or clicks your link from WhatsApp, LinkedIn, mobile, or desktop will see the latest updates instantly!
 - **When Unlocked (Editor Mode):**
   - **`Add Link`**: Add custom buttons (choose Primary Peacock Green or Outline).
   - **`Delete Link`**: Hover over any button and click `×` to remove.
-  - **`Change Photo`**: Click the camera pill on the right side to upload Suni Jose's picture from your computer.
-  - **`Edit Info`**: Update name, title, department, bio, phone, or email.
+  - **`Change Photo`**: Click the camera pill on the right side to upload Suni Jose's picture from your computer or phone.
+  - **`Edit Info`**: Update name, title, department, bio, phone, email, or Google Maps location URL.
 
 ---
 

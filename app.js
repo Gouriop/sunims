@@ -2,9 +2,11 @@
  * Suni Jose &bull; Dark Editorial Hero Application
  * Theme: Peacock Green & White
  * Passcode: sunikkutty123
+ * Real-time Cloud Synchronization via REST API
  */
 
 const PASSWORD_KEY = "sunikkutty123";
+const CLOUD_API_ENDPOINT = "https://api.restful-api.dev/objects/ff808181a09d98f701a1a691763331e6";
 
 const DEFAULT_PHOTO = "sunimiss.png";
 
@@ -23,21 +25,38 @@ const DEFAULT_LINKS = [
   { id: "1", title: "Christ College of Engineering", url: "https://cce.edu.in", isPrimary: true }
 ];
 
-const STORAGE_LINKS_KEY = "suni_hero_links_v6";
-const STORAGE_DETAILS_KEY = "suni_profile_details_v6";
-const STORAGE_PHOTO_KEY = "suni_hero_photo_v6";
-const STORAGE_AUTH_KEY = "suni_auth_session_v6";
+const STORAGE_LINKS_KEY = "suni_hero_links_v7";
+const STORAGE_DETAILS_KEY = "suni_profile_details_v7";
+const STORAGE_PHOTO_KEY = "suni_hero_photo_v7";
+const STORAGE_AUTH_KEY = "suni_auth_session_v7";
 
 let links = [];
 let heroPhoto = "";
 let profileDetails = {};
 let isAuthenticated = false;
+let isSaving = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   loadData();
   setupEvents();
   render();
+
+  // Initial cloud sync
+  syncFromCloud();
+
+  // Real-time polling every 6 seconds so all devices see updates automatically
+  setInterval(syncFromCloud, 6000);
+
+  // Sync whenever tab becomes visible or focused
+  window.addEventListener("focus", syncFromCloud);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") syncFromCloud();
+  });
 });
+
+// =============================================================================
+// Data Loading & Cloud Sync
+// =============================================================================
 
 function loadData() {
   try {
@@ -59,18 +78,90 @@ function loadData() {
   }
 }
 
-function saveLinks() {
-  localStorage.setItem(STORAGE_LINKS_KEY, JSON.stringify(links));
+async function syncFromCloud() {
+  if (isSaving) return; // Don't overwrite while user is currently saving
+  try {
+    const res = await fetch(CLOUD_API_ENDPOINT, { cache: "no-store" });
+    if (!res.ok) return;
+    const json = await res.json();
+    if (json && json.data) {
+      let changed = false;
+
+      if (json.data.links && Array.isArray(json.data.links)) {
+        if (JSON.stringify(links) !== JSON.stringify(json.data.links)) {
+          links = json.data.links;
+          localStorage.setItem(STORAGE_LINKS_KEY, JSON.stringify(links));
+          changed = true;
+        }
+      }
+
+      if (json.data.details) {
+        const merged = { ...DEFAULT_DETAILS, ...json.data.details };
+        if (JSON.stringify(profileDetails) !== JSON.stringify(merged)) {
+          profileDetails = merged;
+          localStorage.setItem(STORAGE_DETAILS_KEY, JSON.stringify(profileDetails));
+          changed = true;
+        }
+      }
+
+      if (json.data.photo && json.data.photo !== heroPhoto) {
+        heroPhoto = json.data.photo;
+        localStorage.setItem(STORAGE_PHOTO_KEY, heroPhoto);
+        changed = true;
+      }
+
+      if (changed) {
+        render();
+      }
+    }
+  } catch (e) {
+    console.warn("Cloud sync check (offline/network fallback):", e);
+  }
 }
 
-function saveDetails() {
+async function saveToCloud() {
+  isSaving = true;
+  showToast("Saving in real-time across all devices...");
+  
+  // Persist locally first
+  localStorage.setItem(STORAGE_LINKS_KEY, JSON.stringify(links));
   localStorage.setItem(STORAGE_DETAILS_KEY, JSON.stringify(profileDetails));
+  localStorage.setItem(STORAGE_PHOTO_KEY, heroPhoto);
+
+  try {
+    const payload = {
+      name: "Suni Jose Bio",
+      data: {
+        photo: heroPhoto,
+        links: links,
+        details: profileDetails,
+        updatedAt: Date.now()
+      }
+    };
+
+    const res = await fetch(CLOUD_API_ENDPOINT, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      showToast("Saved! Live in real-time across all devices.");
+    } else {
+      showToast("Saved locally (cloud sync error).");
+    }
+  } catch (err) {
+    console.error("Cloud save failed:", err);
+    showToast("Saved locally (offline mode).");
+  } finally {
+    isSaving = false;
+  }
 }
 
 function savePhoto(url) {
   heroPhoto = url;
-  localStorage.setItem(STORAGE_PHOTO_KEY, url);
   document.getElementById("photoContainer").style.backgroundImage = `url('${url}')`;
+  saveToCloud();
 }
 
 // =============================================================================
@@ -158,9 +249,8 @@ function renderLinks() {
         e.preventDefault();
         if (confirm(`Remove link: "${item.title}"?`)) {
           links.splice(index, 1);
-          saveLinks();
           renderLinks();
-          showToast("Link removed");
+          saveToCloud();
         }
       });
     }
@@ -263,13 +353,12 @@ function setupEvents() {
       phone: document.getElementById("inputPhone").value.trim(),
       email: document.getElementById("inputEmail").value.trim()
     };
-    saveDetails();
     render();
     editDetailsModal.classList.remove("open");
-    showToast("Details updated successfully!");
+    saveToCloud();
   });
 
-  // Photo Upload
+  // Photo Upload with automatic responsive client-side compression
   const uploadPhotoBtn = document.getElementById("uploadPhotoBtn");
   const photoFileInput = document.getElementById("photoFileInput");
 
@@ -284,12 +373,11 @@ function setupEvents() {
         showToast("Please choose a valid image file");
         return;
       }
-      const reader = new FileReader();
-      reader.onload = (evt) => {
-        savePhoto(evt.target.result);
-        showToast("Photo updated successfully!");
-      };
-      reader.readAsDataURL(file);
+
+      showToast("Optimizing & uploading photo...");
+      compressImage(file, (optimizedDataUrl) => {
+        savePhoto(optimizedDataUrl);
+      });
       e.target.value = "";
     }
   });
@@ -325,10 +413,9 @@ function setupEvents() {
         url,
         isPrimary
       });
-      saveLinks();
       renderLinks();
       addLinkModal.classList.remove("open");
-      showToast("Link added successfully!");
+      saveToCloud();
     }
   });
 
@@ -349,13 +436,44 @@ function setupEvents() {
   });
 }
 
+// Client-side image compressor: keeps aspect ratio, max 900px, 0.82 JPEG quality (~70KB)
+function compressImage(file, callback) {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      const maxDim = 900;
+      let w = img.width;
+      let h = img.height;
+      if (w > maxDim || h > maxDim) {
+        if (w > h) {
+          h = Math.round((h * maxDim) / w);
+          w = maxDim;
+        } else {
+          w = Math.round((w * maxDim) / h);
+          h = maxDim;
+        }
+      }
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, w, h);
+      const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.82);
+      callback(compressedDataUrl);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 function showToast(msg) {
   const t = document.getElementById("toast");
   t.textContent = msg;
   t.style.display = "block";
   setTimeout(() => {
     t.style.display = "none";
-  }, 2400);
+  }, 2800);
 }
 
 function ensureUrl(url) {
