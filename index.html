@@ -11,6 +11,19 @@
 </head>
 <body>
 
+  <!-- Top Right Auth Corner -->
+  <div class="top-auth-corner">
+    <button id="loginBtn" class="auth-pill-btn" title="Editor Login">
+      <svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      <span>Login</span>
+    </button>
+    <div id="loggedInControls" class="auth-logged-in-bar" style="display: none;">
+      <span class="editor-indicator-badge">● Editor Mode</span>
+      <button id="editDetailsBtn" class="pill-action-btn" title="Edit Profile Details">Edit Info</button>
+      <button id="logoutBtn" class="pill-action-btn pill-action-danger" title="Log out">Logout</button>
+    </div>
+  </div>
+
   <!-- Fullscreen Split Hero Layout -->
   <div class="hero-layout">
     
@@ -128,6 +141,83 @@
         <div class="modal-actions">
           <button type="button" class="btn btn-dark" id="cancelAddLink">Cancel</button>
           <button type="submit" class="btn btn-orange">Save Link</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Editor Login -->
+  <div class="modal-backdrop" id="loginModal">
+    <div class="modal-box modal-box-sm">
+      <div class="modal-header">
+        <h3>Editor Login</h3>
+        <button class="modal-close" id="closeLoginModal">&times;</button>
+      </div>
+      <form id="loginForm" class="modal-form">
+        <p class="modal-note">Enter your editor password to add links, remove links, or update photos.</p>
+        <div class="input-group">
+          <label for="loginPassword">Password</label>
+          <div class="password-wrap">
+            <input type="password" id="loginPassword" placeholder="Enter password" required autocomplete="current-password" />
+            <button type="button" id="togglePasswordBtn" class="toggle-pwd-btn" title="Show / Hide password">
+              <svg id="eyeIcon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+        </div>
+        <div id="loginError" class="error-msg" style="display: none;">
+          Incorrect password. Please try again.
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-dark" id="cancelLogin">Cancel</button>
+          <button type="submit" class="btn btn-orange">Unlock</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Edit Details -->
+  <div class="modal-backdrop" id="editDetailsModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Edit Details</h3>
+        <button class="modal-close" id="closeEditDetails">&times;</button>
+      </div>
+      <form id="editDetailsForm" class="modal-form">
+        <div class="input-row">
+          <div class="input-group">
+            <label for="inputFirstName">First Name</label>
+            <input type="text" id="inputFirstName" required />
+          </div>
+          <div class="input-group">
+            <label for="inputLastName">Last Name</label>
+            <input type="text" id="inputLastName" required />
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="inputEyebrow">Header Eyebrow</label>
+          <input type="text" id="inputEyebrow" />
+        </div>
+        <div class="input-group">
+          <label for="inputRole">Designation / Subtitle</label>
+          <input type="text" id="inputRole" />
+        </div>
+        <div class="input-group">
+          <label for="inputDesc">Bio / Description</label>
+          <textarea id="inputDesc" rows="3" class="input-textarea"></textarea>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label for="inputPhone">Phone</label>
+            <input type="text" id="inputPhone" />
+          </div>
+          <div class="input-group">
+            <label for="inputEmail">Email</label>
+            <input type="email" id="inputEmail" />
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-dark" id="cancelEditDetails">Cancel</button>
+          <button type="submit" class="btn btn-orange">Save Details</button>
         </div>
       </form>
     </div>

@@ -1,11 +1,25 @@
-# Suni Jose &bull; Links Web App
+# Suni Jose &bull; Dark Editorial Bio-Link Web App
 
-A minimal, bio-link web app with full-screen background photo, clean profile card, and quick links.
+A bold, dark-themed personal link and profile hub inspired by modern high-impact editorial design.
 
 ---
 
-### ✨ Features
-- **🖼️ Photo in Background:** Fullscreen cover photo with dark contrast overlay. Upload your own photo or choose a preset.
-- **🪪 Small Card for Details:** Frosted glass centered card with avatar, Suni Jose's name, role (Assistant Professor), department (CSBS), and direct contact badges (email & phone).
-- **🔗 Option to Add Links:** Clean clickable link tiles with auto-favicons and an easy **+ Add Link** button.
-- **🔒 Edit Mode:** Enter passcode (`admin123`) to add/delete links, update details, or change the background photo anytime.
+### 🌟 Features
+- **🔥 Massive Condensed Typography:** `SUNI` (white) & `JOSE` (vibrant orange `#ff7a29`) in Google Font *Bebas Neue*.
+- **📍 Location & Tagline:** `THRISSUR • CHRIST COLLEGE OF ENGINEERING` eyebrow tag and `Assistant Professor • Computer Science & Business Systems`.
+- **🔘 Call-to-Action Link Buttons:**
+  - Solid Orange Primary buttons (*like "Book The Mic"*)
+  - Dark Outline Secondary buttons (*like "See The Work"*)
+- **📞 Direct Contact Row:** Phone (`7994532402`), Email (`sunijose.cs@cce.edu.in`), and social icons.
+- **👤 Right-Side Photo:** Soft gradient vignette blending into the dark matte background.
+
+---
+
+### 🔒 Editor Login & Management
+- Click **`Login`** in the top-right corner.
+- **Passcode:** `sunimiss123`
+- **When Unlocked (Editor Mode):**
+  - **`Add Link`**: Add new buttons (choose Primary Orange or Dark Outline).
+  - **`Delete Link`**: Hover over any button and click `×` to remove.
+  - **`Change Photo`**: Click the camera pill on the right side to upload Suni Jose's picture from your computer.
+  - **`Edit Info`**: Update name, title, department, bio, phone, or email.
