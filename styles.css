@@ -1,15 +1,19 @@
 /* ==========================================================================
-   Suni Jose &bull; Dark Editorial Hero Layout (Inspired by reference)
+   Suni Jose &bull; Dark Editorial Hero Layout (Peacock Green & White Theme)
    ========================================================================== */
 
 :root {
-  --bg-dark: #0b0c0e;
-  --accent-orange: #ff7a29;
-  --accent-orange-hover: #ff8c42;
+  --bg-dark: #070e12;
+  --bg-card: #0d171d;
+  --bg-input: #050a0d;
+  --accent-peacock: #00b49f;
+  --accent-peacock-hover: #00cca4;
+  --accent-peacock-glow: rgba(0, 180, 159, 0.35);
+  --accent-peacock-subtle: rgba(0, 180, 159, 0.15);
   --text-white: #ffffff;
-  --text-muted: #9ca3af;
-  --border-dark: #1e2229;
-  --border-hover: #333a46;
+  --text-muted: #94a3b8;
+  --border-dark: #16242c;
+  --border-hover: #233946;
   --font-display: 'Bebas Neue', Impact, sans-serif;
   --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
@@ -47,11 +51,11 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  background: rgba(15, 23, 42, 0.65);
+  background: rgba(13, 23, 29, 0.7);
   color: #e2e8f0;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 0.45rem 0.95rem;
   border-radius: 9999px;
   font-size: 0.78rem;
@@ -61,36 +65,38 @@ html, body {
 }
 
 .auth-pill-btn:hover {
-  background: rgba(255, 122, 41, 0.18);
-  border-color: var(--accent-orange);
-  color: var(--accent-orange);
+  background: var(--accent-peacock-subtle);
+  border-color: var(--accent-peacock);
+  color: var(--accent-peacock);
   transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 180, 159, 0.2);
 }
 
 .auth-logged-in-bar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(13, 23, 29, 0.9);
+  border: 1px solid rgba(0, 180, 159, 0.3);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 0.35rem 0.5rem 0.35rem 0.85rem;
   border-radius: 9999px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .editor-indicator-badge {
   font-size: 0.76rem;
   font-weight: 700;
-  color: #34d399;
+  color: var(--accent-peacock);
   letter-spacing: 0.02em;
 }
 
 .pill-action-btn {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 0.3rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.74rem;
   font-weight: 700;
@@ -99,9 +105,9 @@ html, body {
 }
 
 .pill-action-btn:hover {
-  background: rgba(255, 122, 41, 0.2);
-  border-color: var(--accent-orange);
-  color: var(--accent-orange);
+  background: var(--accent-peacock-subtle);
+  border-color: var(--accent-peacock);
+  color: var(--accent-peacock);
 }
 
 .pill-action-danger {
@@ -112,6 +118,7 @@ html, body {
 .pill-action-danger:hover {
   background: rgba(239, 68, 68, 0.35);
   color: #ffffff;
+  border-color: #ef4444;
 }
 
 .hero-layout {
@@ -142,7 +149,7 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--accent-orange);
+  color: var(--accent-peacock);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -151,7 +158,7 @@ html, body {
 }
 
 .eyebrow-tag svg {
-  color: var(--accent-orange);
+  color: var(--accent-peacock);
 }
 
 /* Massive Impact Name */
@@ -171,7 +178,8 @@ html, body {
 }
 
 .last-name {
-  color: var(--accent-orange);
+  color: var(--accent-peacock);
+  text-shadow: 0 0 35px rgba(0, 180, 159, 0.25);
 }
 
 /* Designation / Subtitle */
@@ -232,21 +240,25 @@ html, body {
   white-space: nowrap;
 }
 
-/* Primary Orange Button (like "Book The Mic") */
+/* Primary Peacock Green Button */
+.btn-peacock,
 .btn-orange {
-  background-color: var(--accent-orange);
-  color: #0b0c0e;
-  border: 1px solid var(--accent-orange);
+  background-color: var(--accent-peacock);
+  color: #041014;
+  border: 1px solid var(--accent-peacock);
+  box-shadow: 0 4px 14px rgba(0, 180, 159, 0.25);
 }
 
+.btn-peacock:hover,
 .btn-orange:hover {
-  background-color: var(--accent-orange-hover);
-  border-color: var(--accent-orange-hover);
+  background-color: var(--accent-peacock-hover);
+  border-color: var(--accent-peacock-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 122, 41, 0.35);
+  box-shadow: 0 8px 24px var(--accent-peacock-glow);
+  color: #041014;
 }
 
-/* Dark Outline Button (like "See The Work") */
+/* Dark / White Outline Button */
 .btn-outline {
   background-color: rgba(255, 255, 255, 0.03);
   color: var(--text-white);
@@ -255,9 +267,10 @@ html, body {
 
 .btn-outline:hover {
   background-color: rgba(255, 255, 255, 0.08);
-  border-color: var(--accent-orange);
-  color: var(--accent-orange);
+  border-color: var(--accent-peacock);
+  color: var(--accent-peacock);
   transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 180, 159, 0.15);
 }
 
 /* Add Link Button */
@@ -268,8 +281,8 @@ html, body {
   padding: 0.55rem 1.1rem;
   border-radius: 4px;
   background: transparent;
-  color: var(--accent-orange);
-  border: 1px dashed rgba(255, 122, 41, 0.45);
+  color: var(--accent-peacock);
+  border: 1px dashed rgba(0, 180, 159, 0.5);
   font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
@@ -278,9 +291,9 @@ html, body {
 }
 
 .btn-add-link:hover {
-  background: rgba(255, 122, 41, 0.12);
+  background: var(--accent-peacock-subtle);
   border-style: solid;
-  border-color: var(--accent-orange);
+  border-color: var(--accent-peacock);
   transform: translateY(-1px);
 }
 
@@ -300,7 +313,7 @@ html, body {
   position: absolute;
   top: -6px;
   right: -6px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .link-pill-wrapper:hover .delete-btn-badge {
@@ -340,11 +353,11 @@ html, body {
 }
 
 .contact-entry:hover {
-  color: var(--accent-orange);
+  color: var(--accent-peacock);
 }
 
 .contact-entry svg {
-  color: var(--accent-orange);
+  color: var(--accent-peacock);
 }
 
 .social-icons {
@@ -354,9 +367,9 @@ html, body {
 }
 
 .social-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-dark);
   color: var(--text-muted);
@@ -368,10 +381,11 @@ html, body {
 }
 
 .social-icon:hover {
-  background-color: var(--accent-orange);
-  color: #0b0c0e;
-  border-color: var(--accent-orange);
-  transform: translateY(-1px);
+  background-color: var(--accent-peacock);
+  color: #041014;
+  border-color: var(--accent-peacock);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--accent-peacock-glow);
 }
 
 /* ==========================================================================
@@ -394,18 +408,18 @@ html, body {
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-  filter: grayscale(18%) contrast(1.08) brightness(0.85);
+  filter: grayscale(15%) contrast(1.08) brightness(0.85);
   transition: background-image 0.4s ease;
 }
 
-/* Vignette Overlay: Smooth fade to black on the left and edges */
+/* Vignette Overlay: Smooth fade to black/dark peacock slate on left and edges */
 .photo-vignette-overlay {
   position: absolute;
   inset: 0;
   background: 
-    linear-gradient(to right, #0b0c0e 0%, rgba(11, 12, 14, 0.6) 20%, transparent 60%),
-    linear-gradient(to top, #0b0c0e 0%, transparent 25%),
-    linear-gradient(to bottom, #0b0c0e 0%, transparent 15%);
+    linear-gradient(to right, #070e12 0%, rgba(7, 14, 18, 0.6) 25%, transparent 65%),
+    linear-gradient(to top, #070e12 0%, transparent 25%),
+    linear-gradient(to bottom, #070e12 0%, transparent 15%);
   pointer-events: none;
 }
 
@@ -418,7 +432,7 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  background-color: rgba(11, 12, 14, 0.85);
+  background-color: rgba(7, 14, 18, 0.85);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 0.5rem 0.95rem;
@@ -432,10 +446,11 @@ html, body {
 }
 
 .upload-photo-pill:hover {
-  background-color: var(--accent-orange);
-  color: #0b0c0e;
-  border-color: var(--accent-orange);
+  background-color: var(--accent-peacock);
+  color: #041014;
+  border-color: var(--accent-peacock);
   transform: scale(1.05);
+  box-shadow: 0 4px 15px var(--accent-peacock-glow);
 }
 
 /* ==========================================================================
@@ -445,7 +460,7 @@ html, body {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.82);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   display: none;
@@ -460,13 +475,13 @@ html, body {
 }
 
 .modal-box {
-  background: #14171d;
-  border: 1px solid #272d38;
+  background: var(--bg-card);
+  border: 1px solid #1f3442;
   border-radius: 12px;
   width: 100%;
   max-width: 440px;
   padding: 1.75rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 180, 159, 0.1);
 }
 
 .modal-header {
@@ -489,6 +504,7 @@ html, body {
   font-size: 1.6rem;
   color: var(--text-muted);
   cursor: pointer;
+  transition: color 0.15s;
 }
 
 .modal-close:hover {
@@ -517,18 +533,19 @@ html, body {
 
 .input-group input {
   padding: 0.75rem 0.95rem;
-  background-color: #0b0c0e;
-  border: 1px solid #272d38;
+  background-color: var(--bg-input);
+  border: 1px solid #1c2e3a;
   border-radius: 6px;
   color: #ffffff;
   font-size: 0.9rem;
   font-family: inherit;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .input-group input:focus {
-  border-color: var(--accent-orange);
+  border-color: var(--accent-peacock);
+  box-shadow: 0 0 0 2px rgba(0, 180, 159, 0.25);
 }
 
 .form-checkbox label {
@@ -541,8 +558,14 @@ html, body {
   cursor: pointer;
 }
 
+.form-checkbox input[type="checkbox"] {
+  accent-color: var(--accent-peacock);
+  width: 16px;
+  height: 16px;
+}
+
 .modal-box-sm {
-  max-width: 360px;
+  max-width: 370px;
 }
 
 .modal-note {
@@ -586,27 +609,28 @@ html, body {
 
 .input-textarea {
   padding: 0.75rem 0.95rem;
-  background-color: #0b0c0e;
-  border: 1px solid #272d38;
+  background-color: var(--bg-input);
+  border: 1px solid #1c2e3a;
   border-radius: 6px;
   color: #ffffff;
   font-size: 0.88rem;
   font-family: inherit;
   outline: none;
   resize: vertical;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .input-textarea:focus {
-  border-color: var(--accent-orange);
+  border-color: var(--accent-peacock);
+  box-shadow: 0 0 0 2px rgba(0, 180, 159, 0.25);
 }
 
 .error-msg {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #ef4444;
-  background: rgba(239, 68, 68, 0.12);
-  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
 }
@@ -620,13 +644,13 @@ html, body {
 }
 
 .btn-dark {
-  background-color: #272d38;
+  background-color: #1a2730;
   color: #ffffff;
-  border: none;
+  border: 1px solid #233542;
 }
 
 .btn-dark:hover {
-  background-color: #374151;
+  background-color: #273847;
 }
 
 /* Toast */
@@ -635,13 +659,13 @@ html, body {
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--accent-orange);
-  color: #0b0c0e;
+  background: var(--accent-peacock);
+  color: #041014;
   font-weight: 800;
   font-size: 0.85rem;
   padding: 0.65rem 1.35rem;
   border-radius: 9999px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-peacock-glow);
   display: none;
   z-index: 200;
 }
@@ -666,8 +690,8 @@ html, body {
 
   .photo-vignette-overlay {
     background: 
-      linear-gradient(to top, #0b0c0e 0%, rgba(11, 12, 14, 0.4) 30%, transparent 100%),
-      linear-gradient(to bottom, #0b0c0e 0%, transparent 20%);
+      linear-gradient(to top, #070e12 0%, rgba(7, 14, 18, 0.4) 30%, transparent 100%),
+      linear-gradient(to bottom, #070e12 0%, transparent 20%);
   }
 
   .hero-name {

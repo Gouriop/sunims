@@ -1,6 +1,7 @@
 /**
  * Suni Jose &bull; Dark Editorial Hero Application
- * Features: Passcode Protection (password: sunimiss123), Editable Links & Details
+ * Theme: Peacock Green & White
+ * Passcode: sunimiss123
  */
 
 const PASSWORD_KEY = "sunimiss123";
@@ -18,11 +19,16 @@ const DEFAULT_DETAILS = {
 };
 
 const DEFAULT_LINKS = [
-  { id: "1", title: "KTU Academic Portal", url: "https://ktu.edu.in", isPrimary: true },
-  { id: "2", title: "CSBS Syllabus & Scheme", url: "https://ktu.edu.in/eu/acd/academicRegulationSys.htm", isPrimary: false },
-  { id: "3", title: "Course Notes & Lab", url: "https://cce.edu.in", isPrimary: false },
+  { id: "1", title: "Google Scholar Profile", url: "https://scholar.google.com/citations?user=O_2Q0OUAAAAJ&hl=en", isPrimary: true },
+  { id: "2", title: "LinkedIn Profile", url: "https://www.linkedin.com/in/suni-j-5052671a/", isPrimary: false },
+  { id: "3", title: "CSBS Syllabus & Scheme", url: "https://ktu.edu.in/eu/acd/academicRegulationSys.htm", isPrimary: false },
   { id: "4", title: "Christ College of Engineering", url: "https://cce.edu.in", isPrimary: false }
 ];
+
+const STORAGE_LINKS_KEY = "suni_hero_links_v4";
+const STORAGE_DETAILS_KEY = "suni_profile_details_v4";
+const STORAGE_PHOTO_KEY = "suni_hero_photo_v4";
+const STORAGE_AUTH_KEY = "suni_auth_session_v4";
 
 let links = [];
 let heroPhoto = "";
@@ -37,16 +43,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function loadData() {
   try {
-    const savedPhoto = localStorage.getItem("suni_hero_photo");
+    const savedPhoto = localStorage.getItem(STORAGE_PHOTO_KEY) || localStorage.getItem("suni_hero_photo");
     heroPhoto = savedPhoto || DEFAULT_PHOTO;
 
-    const savedLinks = localStorage.getItem("suni_hero_links_v2");
+    const savedLinks = localStorage.getItem(STORAGE_LINKS_KEY);
     links = savedLinks ? JSON.parse(savedLinks) : [...DEFAULT_LINKS];
 
-    const savedDetails = localStorage.getItem("suni_profile_details_v2");
+    const savedDetails = localStorage.getItem(STORAGE_DETAILS_KEY);
     profileDetails = savedDetails ? JSON.parse(savedDetails) : { ...DEFAULT_DETAILS };
 
-    isAuthenticated = localStorage.getItem("suni_auth_session") === "true";
+    isAuthenticated = localStorage.getItem(STORAGE_AUTH_KEY) === "true";
   } catch (e) {
     heroPhoto = DEFAULT_PHOTO;
     links = [...DEFAULT_LINKS];
@@ -56,16 +62,16 @@ function loadData() {
 }
 
 function saveLinks() {
-  localStorage.setItem("suni_hero_links_v2", JSON.stringify(links));
+  localStorage.setItem(STORAGE_LINKS_KEY, JSON.stringify(links));
 }
 
 function saveDetails() {
-  localStorage.setItem("suni_profile_details_v2", JSON.stringify(profileDetails));
+  localStorage.setItem(STORAGE_DETAILS_KEY, JSON.stringify(profileDetails));
 }
 
 function savePhoto(url) {
   heroPhoto = url;
-  localStorage.setItem("suni_hero_photo", url);
+  localStorage.setItem(STORAGE_PHOTO_KEY, url);
   document.getElementById("photoContainer").style.backgroundImage = `url('${url}')`;
 }
 
@@ -132,7 +138,7 @@ function renderLinks() {
     const wrap = document.createElement("div");
     wrap.className = "link-pill-wrapper";
 
-    const btnClass = item.isPrimary ? "btn btn-orange" : "btn btn-outline";
+    const btnClass = item.isPrimary ? "btn btn-peacock" : "btn btn-outline";
     const fullUrl = ensureUrl(item.url);
 
     wrap.innerHTML = `
@@ -192,7 +198,7 @@ function setupEvents() {
     const entered = loginPassword.value.trim();
     if (entered === PASSWORD_KEY) {
       isAuthenticated = true;
-      localStorage.setItem("suni_auth_session", "true");
+      localStorage.setItem(STORAGE_AUTH_KEY, "true");
       loginModal.classList.remove("open");
       render();
       showToast("Welcome back! Editor mode unlocked.");
@@ -216,7 +222,7 @@ function setupEvents() {
   // Logout
   document.getElementById("logoutBtn").addEventListener("click", () => {
     isAuthenticated = false;
-    localStorage.setItem("suni_auth_session", "false");
+    localStorage.setItem(STORAGE_AUTH_KEY, "false");
     render();
     showToast("Logged out. Switched to public view.");
   });

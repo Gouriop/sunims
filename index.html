@@ -18,7 +18,7 @@
       <span>Login</span>
     </button>
     <div id="loggedInControls" class="auth-logged-in-bar" style="display: none;">
-      <span class="editor-indicator-badge">● Editor Mode</span>
+      <span class="editor-indicator-badge">&bull; Editor Mode</span>
       <button id="editDetailsBtn" class="pill-action-btn" title="Edit Profile Details">Edit Info</button>
       <button id="logoutBtn" class="pill-action-btn pill-action-danger" title="Log out">Logout</button>
     </div>
@@ -78,19 +78,16 @@
             </a>
           </div>
 
-          <!-- Social / Academic Icons -->
+          <!-- Social / Academic Icons (KTU Removed, LinkedIn & Scholar Added) -->
           <div class="social-icons">
-            <a href="https://cce.edu.in" target="_blank" title="Christ College of Engineering" class="social-icon">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <a href="https://www.linkedin.com/in/suni-j-5052671a/" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" class="social-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z"></path></svg>
             </a>
-            <a href="https://ktu.edu.in" target="_blank" title="KTU Portal" class="social-icon">
+            <a href="https://scholar.google.com/citations?user=O_2Q0OUAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar Profile" class="social-icon">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
             </a>
-            <a href="https://scholar.google.com" target="_blank" title="Google Scholar" class="social-icon">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            </a>
-            <a href="https://linkedin.com" target="_blank" title="LinkedIn" class="social-icon">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z"></path></svg>
+            <a href="https://cce.edu.in" target="_blank" rel="noopener noreferrer" title="Christ College of Engineering" class="social-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             </a>
           </div>
         </div>
@@ -126,21 +123,21 @@
       <form id="addLinkForm" class="modal-form">
         <div class="input-group">
           <label for="linkTitleInput">Button Text / Title</label>
-          <input type="text" id="linkTitleInput" placeholder="e.g. KTU Academic Portal" required />
+          <input type="text" id="linkTitleInput" placeholder="e.g. Research Papers" required />
         </div>
         <div class="input-group">
           <label for="linkUrlInput">URL / Destination Link</label>
-          <input type="text" id="linkUrlInput" placeholder="e.g. https://ktu.edu.in" required />
+          <input type="text" id="linkUrlInput" placeholder="e.g. https://..." required />
         </div>
         <div class="form-checkbox">
           <label>
             <input type="checkbox" id="linkIsPrimary" />
-            <span>Highlight as Primary (Orange Button)</span>
+            <span>Highlight as Primary (Peacock Green Button)</span>
           </label>
         </div>
         <div class="modal-actions">
           <button type="button" class="btn btn-dark" id="cancelAddLink">Cancel</button>
-          <button type="submit" class="btn btn-orange">Save Link</button>
+          <button type="submit" class="btn btn-peacock">Save Link</button>
         </div>
       </form>
     </div>
@@ -158,18 +155,18 @@
         <div class="input-group">
           <label for="loginPassword">Password</label>
           <div class="password-wrap">
-            <input type="password" id="loginPassword" placeholder="Enter password" required autocomplete="current-password" />
+            <input type="password" id="loginPassword" placeholder="Enter password (sunimiss123)" required autocomplete="current-password" />
             <button type="button" id="togglePasswordBtn" class="toggle-pwd-btn" title="Show / Hide password">
               <svg id="eyeIcon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
             </button>
           </div>
         </div>
         <div id="loginError" class="error-msg" style="display: none;">
-          Incorrect password. Please try again.
+          Incorrect password. (Passcode: sunimiss123)
         </div>
         <div class="modal-actions">
           <button type="button" class="btn btn-dark" id="cancelLogin">Cancel</button>
-          <button type="submit" class="btn btn-orange">Unlock</button>
+          <button type="submit" class="btn btn-peacock">Unlock</button>
         </div>
       </form>
     </div>
@@ -217,7 +214,7 @@
         </div>
         <div class="modal-actions">
           <button type="button" class="btn btn-dark" id="cancelEditDetails">Cancel</button>
-          <button type="submit" class="btn btn-orange">Save Details</button>
+          <button type="submit" class="btn btn-peacock">Save Details</button>
         </div>
       </form>
     </div>
