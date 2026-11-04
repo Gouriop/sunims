@@ -7,14 +7,13 @@ A bold, dark-themed personal link and profile hub for **Suni Jose**, Assistant P
 ### 🌟 Design & Theme
 - **Theme:** Peacock Green (`#00b49f`) and Crisp White (`#ffffff`) on Deep Matte Dark Slate (`#070e12`).
 - **Typography:** Google Fonts *Bebas Neue* for high-impact condensed hero names (`SUNI` in white, `JOSE` in peacock green) and *Plus Jakarta Sans* for readable, modern body copy.
-- **Hero Photo:** Right-side portrait with smooth multi-directional gradient vignette fading naturally into the background.
+- **Hero Photo:** `sunimiss.png` portrait with smooth multi-directional gradient vignette fading naturally into the dark background.
 - **Academic & Social Links:** Direct links to LinkedIn, Google Scholar, and Christ College of Engineering.
 
 ---
 
 ### 🔘 Action Buttons
-- **Peacock Green Primary Buttons:** Highlighted prominent links (e.g., Google Scholar Profile).
-- **Crisp Outline Secondary Buttons:** Clean dark/white outline links (e.g., LinkedIn Profile, CSBS Syllabus, Christ College of Engineering).
+- **Peacock Green Primary Button:** Christ College of Engineering (`https://cce.edu.in`). Custom buttons can be added anytime in Editor Mode.
 
 ---
 

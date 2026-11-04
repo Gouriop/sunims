@@ -421,9 +421,8 @@ html, body {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center top;
+  background-position: center 20%;
   background-repeat: no-repeat;
-  filter: grayscale(15%) contrast(1.08) brightness(0.85);
   transition: background-image 0.4s ease;
 }
 
@@ -432,8 +431,8 @@ html, body {
   position: absolute;
   inset: 0;
   background: 
-    linear-gradient(to right, #070e12 0%, rgba(7, 14, 18, 0.6) 25%, transparent 65%),
-    linear-gradient(to top, #070e12 0%, transparent 25%),
+    linear-gradient(to right, #070e12 0%, rgba(7, 14, 18, 0.4) 20%, transparent 60%),
+    linear-gradient(to top, #070e12 0%, transparent 20%),
     linear-gradient(to bottom, #070e12 0%, transparent 15%);
   pointer-events: none;
 }

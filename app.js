@@ -6,7 +6,7 @@
 
 const PASSWORD_KEY = "sunikkutty123";
 
-const DEFAULT_PHOTO = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1600";
+const DEFAULT_PHOTO = "sunimiss.png";
 
 const DEFAULT_DETAILS = {
   nameFirst: "SUNI",
@@ -20,16 +20,13 @@ const DEFAULT_DETAILS = {
 };
 
 const DEFAULT_LINKS = [
-  { id: "1", title: "Google Scholar Profile", url: "https://scholar.google.com/citations?user=O_2Q0OUAAAAJ&hl=en", isPrimary: true },
-  { id: "2", title: "LinkedIn Profile", url: "https://www.linkedin.com/in/suni-j-5052671a/", isPrimary: false },
-  { id: "3", title: "CSBS Syllabus & Scheme", url: "https://ktu.edu.in/eu/acd/academicRegulationSys.htm", isPrimary: false },
-  { id: "4", title: "Christ College of Engineering", url: "https://cce.edu.in", isPrimary: false }
+  { id: "1", title: "Christ College of Engineering", url: "https://cce.edu.in", isPrimary: true }
 ];
 
-const STORAGE_LINKS_KEY = "suni_hero_links_v5";
-const STORAGE_DETAILS_KEY = "suni_profile_details_v5";
-const STORAGE_PHOTO_KEY = "suni_hero_photo_v5";
-const STORAGE_AUTH_KEY = "suni_auth_session_v5";
+const STORAGE_LINKS_KEY = "suni_hero_links_v6";
+const STORAGE_DETAILS_KEY = "suni_profile_details_v6";
+const STORAGE_PHOTO_KEY = "suni_hero_photo_v6";
+const STORAGE_AUTH_KEY = "suni_auth_session_v6";
 
 let links = [];
 let heroPhoto = "";
@@ -44,8 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function loadData() {
   try {
-    const savedPhoto = localStorage.getItem(STORAGE_PHOTO_KEY) || localStorage.getItem("suni_hero_photo");
-    heroPhoto = savedPhoto || DEFAULT_PHOTO;
+    const savedPhoto = localStorage.getItem(STORAGE_PHOTO_KEY);
+    heroPhoto = (savedPhoto && !savedPhoto.includes("unsplash")) ? savedPhoto : DEFAULT_PHOTO;
 
     const savedLinks = localStorage.getItem(STORAGE_LINKS_KEY);
     links = savedLinks ? JSON.parse(savedLinks) : [...DEFAULT_LINKS];
