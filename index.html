@@ -3,204 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suni Jose &bull; Links</title>
+  <title>Suni Jose &bull; Assistant Professor (CSBS)</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Fullscreen Photo Background with Dark Scrim -->
-  <div class="bg-photo" id="bgPhoto"></div>
-  <div class="bg-scrim"></div>
+  <!-- Fullscreen Split Hero Layout -->
+  <div class="hero-layout">
+    
+    <!-- LEFT: Content / Bio / Links Column -->
+    <div class="content-side">
+      <div class="content-inner">
+        
+        <!-- Eyebrow Tag -->
+        <div class="eyebrow-tag">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+          <span id="eyebrowText">THRISSUR &bull; CHRIST COLLEGE OF ENGINEERING</span>
+        </div>
 
-  <!-- Top Control Bar (discreet) -->
-  <header class="top-bar">
-    <div id="editorControls" class="editor-controls" style="display: none;">
-      <button id="changeBgBtn" class="pill-btn" title="Change Background Photo">
-        🖼️ Background
-      </button>
-      <button id="editDetailsBtn" class="pill-btn" title="Edit Name & Details">
-        ✏️ Edit Card
-      </button>
-      <button id="logoutBtn" class="pill-btn pill-btn-danger" title="Lock">
-        Logout
-      </button>
+        <!-- Huge Impact Title -->
+        <h1 class="hero-name">
+          <span class="first-name" id="nameFirst">SUNI</span>
+          <span class="last-name" id="nameLast">JOSE</span>
+        </h1>
+
+        <!-- Designation / Subtitle -->
+        <p class="hero-role" id="heroRole">
+          Assistant Professor &bull; Computer Science &amp; Business Systems
+        </p>
+
+        <!-- Bio Description -->
+        <p class="hero-desc" id="heroDesc">
+          Department of Computer Science &amp; Business Systems at Christ College of Engineering. Curating curriculum, research papers, lecture notes, and student resources.
+        </p>
+
+        <!-- Links Container -->
+        <div class="links-section">
+          <div class="links-grid" id="linksGrid">
+            <!-- Dynamically populated via JS -->
+          </div>
+
+          <button id="addLinkBtn" class="btn btn-add-link" title="Add a new link">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add Link</span>
+          </button>
+        </div>
+
+        <!-- Footer Contact Info -->
+        <div class="contact-footer">
+          <div class="contact-items">
+            <a href="tel:7994532402" class="contact-entry" id="contactPhone">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>7994532402</span>
+            </a>
+            <a href="mailto:sunijose.cs@cce.edu.in" class="contact-entry" id="contactEmail" target="_blank">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>sunijose.cs@cce.edu.in</span>
+            </a>
+          </div>
+
+          <!-- Social / Academic Icons -->
+          <div class="social-icons">
+            <a href="https://cce.edu.in" target="_blank" title="Christ College of Engineering" class="social-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            </a>
+            <a href="https://ktu.edu.in" target="_blank" title="KTU Portal" class="social-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+            </a>
+            <a href="https://scholar.google.com" target="_blank" title="Google Scholar" class="social-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" title="LinkedIn" class="social-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <button id="loginBtn" class="pill-btn pill-btn-login" title="Login to add/edit links">
-      🔒 Edit Mode
-    </button>
-  </header>
 
-  <!-- Center Floating Card for Details & Links -->
-  <main class="page-container">
-    <div class="small-card">
-      
-      <!-- Avatar Photo -->
-      <div class="avatar-wrap">
-        <div class="avatar" id="avatarContainer">SJ</div>
-        <button id="changeAvatarBtn" class="avatar-camera-btn" title="Change Profile Photo" style="display: none;">
-          📷
-        </button>
-        <input type="file" id="avatarFileInput" accept="image/*" style="display: none;" />
-      </div>
-
-      <!-- Person Details -->
-      <h1 class="person-name" id="personName">Suni Jose</h1>
-      <p class="person-role" id="personRole">Assistant Professor</p>
-      <p class="person-dept" id="personDept">Department of Computer Science &amp; Business Systems</p>
-
-      <!-- Contact Badges -->
-      <div class="contact-badges">
-        <a href="mailto:sunijose.cs@cce.edu.in" id="contactEmail" class="contact-pill" target="_blank">
-          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          <span id="emailText">sunijose.cs@cce.edu.in</span>
-        </a>
-        <a href="tel:7994532402" id="contactPhone" class="contact-pill">
-          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          <span id="phoneText">7994532402</span>
-        </a>
-      </div>
-
-      <div class="divider"></div>
-
-      <!-- Links List -->
-      <div class="links-list" id="linksList">
+    <!-- RIGHT: Photo in the Background -->
+    <div class="photo-side">
+      <div class="photo-container" id="photoContainer">
         <!-- Rendered via JS -->
       </div>
+      <!-- Soft Gradient Vignette Overlay blending into dark background -->
+      <div class="photo-vignette-overlay"></div>
 
-      <!-- Add Link Button -->
-      <button id="openAddLinkModalBtn" class="add-link-btn">
-        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-        <span>Add Link</span>
+      <!-- Quick Upload Photo Button -->
+      <button id="uploadPhotoBtn" class="upload-photo-pill" title="Upload Photo of Suni Jose">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+        <span>Change Photo</span>
       </button>
-
+      <input type="file" id="photoFileInput" accept="image/*" style="display: none;" />
     </div>
-  </main>
 
-  <!-- MODAL: Add Link -->
+  </div>
+
+  <!-- MODAL: Add New Link -->
   <div class="modal-backdrop" id="addLinkModal">
     <div class="modal-box">
       <div class="modal-header">
-        <h3>Add New Link</h3>
-        <button class="modal-close" id="closeAddLinkModal">&times;</button>
+        <h3>Add Link</h3>
+        <button class="modal-close" id="closeAddLink">&times;</button>
       </div>
       <form id="addLinkForm" class="modal-form">
         <div class="input-group">
-          <label for="newLinkTitle">Link Title</label>
-          <input type="text" id="newLinkTitle" placeholder="e.g. KTU Academic Portal" required />
+          <label for="linkTitleInput">Button Text / Title</label>
+          <input type="text" id="linkTitleInput" placeholder="e.g. KTU Academic Portal" required />
         </div>
         <div class="input-group">
-          <label for="newLinkUrl">URL / Web Link</label>
-          <input type="text" id="newLinkUrl" placeholder="e.g. https://ktu.edu.in" required />
+          <label for="linkUrlInput">URL / Destination Link</label>
+          <input type="text" id="linkUrlInput" placeholder="e.g. https://ktu.edu.in" required />
+        </div>
+        <div class="form-checkbox">
+          <label>
+            <input type="checkbox" id="linkIsPrimary" />
+            <span>Highlight as Primary (Orange Button)</span>
+          </label>
         </div>
         <div class="modal-actions">
-          <button type="button" class="btn btn-secondary" id="cancelAddLink">Cancel</button>
-          <button type="submit" class="btn btn-primary">Add Link</button>
+          <button type="button" class="btn btn-dark" id="cancelAddLink">Cancel</button>
+          <button type="submit" class="btn btn-orange">Save Link</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- MODAL: Edit Person Details -->
-  <div class="modal-backdrop" id="editDetailsModal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h3>Edit Details Card</h3>
-        <button class="modal-close" id="closeEditDetailsModal">&times;</button>
-      </div>
-      <form id="editDetailsForm" class="modal-form">
-        <div class="input-group">
-          <label for="inputName">Full Name</label>
-          <input type="text" id="inputName" required />
-        </div>
-        <div class="input-group">
-          <label for="inputRole">Designation / Role</label>
-          <input type="text" id="inputRole" placeholder="e.g. Assistant Professor" />
-        </div>
-        <div class="input-group">
-          <label for="inputDept">Department</label>
-          <input type="text" id="inputDept" placeholder="e.g. Dept of CSBS" />
-        </div>
-        <div class="input-group">
-          <label for="inputEmail">Email Address</label>
-          <input type="email" id="inputEmail" />
-        </div>
-        <div class="input-group">
-          <label for="inputPhone">Phone Number</label>
-          <input type="text" id="inputPhone" />
-        </div>
-        <div class="modal-actions">
-          <button type="button" class="btn btn-secondary" id="cancelEditDetails">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Details</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- MODAL: Change Background Photo -->
-  <div class="modal-backdrop" id="changeBgModal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h3>Change Background Photo</h3>
-        <button class="modal-close" id="closeBgModal">&times;</button>
-      </div>
-      <div class="modal-form">
-        <div class="input-group">
-          <label>Upload Photo from Computer</label>
-          <input type="file" id="bgFileInput" accept="image/*" style="display: none;" />
-          <button type="button" class="btn btn-secondary btn-full" id="selectBgFileBtn">
-            📁 Choose Photo File
-          </button>
-        </div>
-        <div class="or-separator"><span>OR ENTER IMAGE LINK</span></div>
-        <div class="input-group">
-          <label for="bgUrlInput">Image URL</label>
-          <input type="url" id="bgUrlInput" placeholder="https://images.unsplash.com/..." />
-        </div>
-        <div class="preset-bgs">
-          <label>Quick Presets:</label>
-          <div class="preset-thumbs">
-            <button class="thumb-btn" data-bg="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2000" style="background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=200');" title="Campus Tech"></button>
-            <button class="thumb-btn" data-bg="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2000" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=200');" title="University Campus"></button>
-            <button class="thumb-btn" data-bg="https://images.unsplash.com/photo-1507842229451-7f01be85ab71?q=80&w=2000" style="background-image: url('https://images.unsplash.com/photo-1507842229451-7f01be85ab71?q=80&w=200');" title="Library Books"></button>
-            <button class="thumb-btn" data-bg="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=200');" title="Technology Blue"></button>
-          </div>
-        </div>
-        <div class="modal-actions">
-          <button type="button" class="btn btn-secondary" id="cancelBgModal">Cancel</button>
-          <button type="button" class="btn btn-primary" id="saveBgUrlBtn">Apply URL</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: Passcode Login -->
-  <div class="modal-backdrop" id="loginModal">
-    <div class="modal-box modal-box-sm">
-      <div class="modal-header">
-        <h3>Editor Unlock</h3>
-        <button class="modal-close" id="closeLoginModal">&times;</button>
-      </div>
-      <form id="loginForm" class="modal-form">
-        <p class="modal-note">Enter passcode to add links and edit card details.</p>
-        <div class="input-group">
-          <label for="loginPasscode">Passcode</label>
-          <input type="password" id="loginPasscode" placeholder="Enter password (default: admin123)" required autocomplete="current-password" />
-        </div>
-        <div id="loginError" class="error-msg" style="display: none;">
-          Incorrect passcode. (Default: admin123)
-        </div>
-        <div class="modal-actions">
-          <button type="button" class="btn btn-secondary" id="cancelLogin">Cancel</button>
-          <button type="submit" class="btn btn-primary">Unlock</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Toast -->
+  <!-- Toast feedback -->
   <div class="toast" id="toast"></div>
 
   <script src="app.js"></script>
